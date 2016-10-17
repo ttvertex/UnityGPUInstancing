@@ -1,6 +1,9 @@
 ﻿using UnityEngine;
 using System.Collections;
 
+/// <summary>
+/// Regular rendering mode. 
+/// </summary>
 public class Regular : MonoBehaviour {
 
 	public GameObject m_Prefab;

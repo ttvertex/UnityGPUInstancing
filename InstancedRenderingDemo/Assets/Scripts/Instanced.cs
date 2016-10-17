@@ -1,12 +1,16 @@
 ﻿using UnityEngine;
 using System.Collections.Generic;
 
+/// <summary>
+/// Spawn objects that have instancing shader.
+/// </summary>
 public class Instanced : MonoBehaviour {
 	public GameObject m_Prefab;
 	public int count = 100000;
 
-	// Use this for initialization
+	
 	void Start () {
+        /// Each instance has a property block. This is info that can be accessed via shader.
 		MaterialPropertyBlock props = new MaterialPropertyBlock();
 		MeshRenderer renderer;
 
@@ -26,12 +30,10 @@ public class Instanced : MonoBehaviour {
 			obj.transform.position = new Vector3(Random.Range(0, 1000), Random.Range(0, 1000), Random.Range(0, 1000));
 
 			renderer = obj.GetComponent<MeshRenderer>();
+
+            /// mesh renderer has a setpropertyblock method.
+            /// A faster approach would be to use Graphics.DrawMesh
 			renderer.SetPropertyBlock(props);
 		}
-	}
-	
-	// Update is called once per frame
-	void Update () {
-	
 	}
 }
